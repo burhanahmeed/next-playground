@@ -11,7 +11,7 @@ const MainHeader = () => {
             <h3 className="text-white">
               <Link href="/">PLYGRN</Link>
             </h3>
-            <p className="text-xs">.Brhn&apos;s Next.js Playground</p>
+            <p className="text-xs">.Brhn.&apos;s Next.js Playground</p>
           </div>
           <a
             href="https://github.com/burhanahmeed/next-playground"
