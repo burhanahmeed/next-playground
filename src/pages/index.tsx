@@ -18,9 +18,23 @@ const Index = () => {
       footer={<Footer />}
     >
       <Container>
-        <div className="py-16">
-          <div className="mx-6 cursor-pointer rounded-lg bg-gray-700 bg-gradient-to-r p-4 transition duration-300 ease-in-out hover:scale-105 hover:from-transparent hover:to-purple-900">
+        <div className="p-16">
+          {/* <div className="cursor-pointer rounded-lg bg-gray-700 bg-gradient-to-r p-4 transition duration-300 ease-in-out hover:scale-105 hover:from-transparent hover:to-purple-900">
             <h3 className="text-white">Lorem ipsum</h3>
+          </div> */}
+          <div className="h-80 w-full rounded-lg border border-dashed border-white bg-stone-700 p-8">
+            <div className="flex h-full flex-col items-center justify-center text-2xl text-white">
+              <p>
+                <img
+                  src="https://www.svgrepo.com/show/271821/dizzy.svg"
+                  alt="Empty Inbox"
+                  title="Empty Inbox"
+                  width="120"
+                  height="120"
+                />
+              </p>
+              <p>Oops, there is no project yet...</p>
+            </div>
           </div>
         </div>
       </Container>
