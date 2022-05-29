@@ -1,15 +1,11 @@
-import { useRouter } from 'next/router';
-
 // UI
-import { Button } from 'antd';
 import { Main } from '@/components/templates/Main';
 import { Meta } from '@/components/utils/Meta';
 import Container from '@/components/ui/Container';
 import MainHeader from '@/components/ui/MainHeader';
+import Footer from '@/components/ui/Footer';
 
 const Index = () => {
-  const router = useRouter();
-
   return (
     <Main
       meta={
@@ -19,19 +15,14 @@ const Index = () => {
         />
       }
       header={<MainHeader />}
+      footer={<Footer />}
     >
-      <a href="https://github.com/ixartz/Next-js-Boilerplate">
-        <img
-          about="1234"
-          src={`${router.basePath}/assets/images/nextjs-starter-banner.png`}
-          alt="Nextjs starter banner"
-        />
-      </a>
       <Container>
-        <h1 className="text-2xl font-bold">
-          Boilerplate code for your Nextjs project with Tailwind CSS
-        </h1>
-        <Button type="primary">This is Ant design button</Button>
+        <div className="py-16">
+          <div className="mx-6 cursor-pointer rounded-lg bg-gray-700 bg-gradient-to-r p-4 transition duration-300 ease-in-out hover:scale-105 hover:from-transparent hover:to-purple-900">
+            <h3 className="text-white">Lorem ipsum</h3>
+          </div>
+        </div>
       </Container>
     </Main>
   );
