@@ -8,6 +8,7 @@ interface IProps {
 const Container = (props: IProps) => {
   const containerClass = classNames({
     container: true,
+    'mx-auto': true,
   });
 
   return <section className={containerClass}>{props.children}</section>;
