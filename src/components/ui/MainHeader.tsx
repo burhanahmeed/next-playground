@@ -7,7 +7,12 @@ const MainHeader = () => {
     <header className="fixed z-40 flex h-16 w-full items-center justify-center border-b border-stone-900 bg-stone-800 shadow-md">
       <Container>
         <div className="mx-auto flex h-full w-full items-center justify-between px-4 text-white">
-          <Link href="/">Next Playground</Link>
+          <div>
+            <h3 className="text-white">
+              <Link href="/">PLYGRN</Link>
+            </h3>
+            <p className="text-xs">.Brhn&apos;s Next.js Playground</p>
+          </div>
           <a
             href="https://github.com/burhanahmeed/next-playground"
             className="flex items-center space-x-1 text-white"
