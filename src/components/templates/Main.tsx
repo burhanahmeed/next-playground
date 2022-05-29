@@ -1,12 +1,15 @@
 import type { ReactNode } from 'react';
 
-type IMainProps = {
-  meta: ReactNode;
+interface IMainProps {
+  meta?: ReactNode;
+  header?: ReactNode;
   children: ReactNode;
-};
+}
 
 const Main = (props: IMainProps) => (
   <main className="flex min-h-screen w-full flex-col bg-gray-100">
+    {props.meta}
+    {props.header}
     <section className="flex flex-1 flex-col py-16">{props.children}</section>
   </main>
 );
