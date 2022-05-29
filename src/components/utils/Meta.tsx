@@ -46,6 +46,12 @@ const Meta = (props: IMetaProps) => {
           href={`${router.basePath}/favicon.ico`}
           key="favicon"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <NextSeo
         title={props.title}
