@@ -4,6 +4,7 @@ import { Meta } from '@/components/utils/Meta';
 import Container from '@/components/ui/Container';
 import MainHeader from '@/components/ui/MainHeader';
 import Footer from '@/components/ui/Footer';
+import EmptyList from '@/components/ui/EmptyList';
 // import Card from '@/components/ui/Card';
 
 const Index = () => {
@@ -23,20 +24,18 @@ const Index = () => {
           {/* <Card>
             <h3 className="text-white">Lorem ipsum</h3>
           </Card> */}
-          <div className="h-80 w-full rounded-lg border border-dashed border-white bg-stone-700 p-8">
-            <div className="flex h-full flex-col items-center justify-center text-2xl text-white">
-              <p>
-                <img
-                  src="https://www.svgrepo.com/show/271821/dizzy.svg"
-                  alt="Empty Inbox"
-                  title="Empty Inbox"
-                  width="120"
-                  height="120"
-                />
-              </p>
-              <p>Oops, there is no project yet...</p>
-            </div>
-          </div>
+          <EmptyList
+            icon={
+              <img
+                src="https://www.svgrepo.com/show/271821/dizzy.svg"
+                alt="Empty Inbox"
+                title="Empty Inbox"
+                width="120"
+                height="120"
+              />
+            }
+            text="Oops, there is no project yet..."
+          />
         </div>
       </Container>
     </Main>
