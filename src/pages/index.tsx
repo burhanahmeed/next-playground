@@ -4,6 +4,7 @@ import { Meta } from '@/components/utils/Meta';
 import Container from '@/components/ui/Container';
 import MainHeader from '@/components/ui/MainHeader';
 import Footer from '@/components/ui/Footer';
+// import Card from '@/components/ui/Card';
 
 const Index = () => {
   return (
@@ -19,9 +20,9 @@ const Index = () => {
     >
       <Container>
         <div className="p-16">
-          {/* <div className="cursor-pointer rounded-lg bg-gray-700 bg-gradient-to-r p-4 transition duration-300 ease-in-out hover:scale-105 hover:from-transparent hover:to-purple-900">
+          {/* <Card>
             <h3 className="text-white">Lorem ipsum</h3>
-          </div> */}
+          </Card> */}
           <div className="h-80 w-full rounded-lg border border-dashed border-white bg-stone-700 p-8">
             <div className="flex h-full flex-col items-center justify-center text-2xl text-white">
               <p>
