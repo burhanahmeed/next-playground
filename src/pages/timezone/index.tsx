@@ -5,13 +5,9 @@ import Container from '@/components/ui/Container';
 import MainHeader from '@/components/ui/MainHeader';
 import Footer from '@/components/ui/Footer';
 // import Card from '@/components/ui/Card';
-import InputTimezone from '@/components/modules/timezone/InputTimezone';
+import Card from '@/components/modules/timezone/TimezoneCard';
 
 const Timezone = () => {
-  const handleChange = (val: string) => {
-    console.log(val);
-  };
-
   return (
     <Main
       meta={
@@ -26,10 +22,10 @@ const Timezone = () => {
       <Container>
         <div className="space-y-4 p-16">
           <h1 className="text-white">⦾ Timezone</h1>
-          <div className="space-y-2 rounded-lg bg-stone-100 p-4">
-            <h4 className="font-semibold">Choose your primary timezone</h4>
-            <InputTimezone onChange={handleChange} />
-          </div>
+          <Card isPrimary />
+          {[1, 2, 3].map((e) => (
+            <Card key={e} />
+          ))}
         </div>
       </Container>
     </Main>
