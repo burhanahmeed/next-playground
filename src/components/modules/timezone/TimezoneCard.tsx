@@ -1,13 +1,17 @@
 import InputTimezone from '@/components/modules/timezone/InputTimezone';
+import { generateHourArray, getMetaData } from '@/components/modules/timezone/helpers';
 
 interface IProps {
   isPrimary?: boolean;
+  changeTimezone: Function;
+  data: {
+    tz?: string,
+    default?: string,
+  }
 }
 
-export default function TimezoneCard({ isPrimary = false }: IProps) {
-  const handleTimezoneChange = (val: string) => {
-    console.log(val);
-  };
+export default function TimezoneCard({ isPrimary = false, changeTimezone, data }: IProps) {
+  const handleTimezoneChange = (val: string) => changeTimezone(val);
 
   let child = (
     <>
@@ -18,22 +22,27 @@ export default function TimezoneCard({ isPrimary = false }: IProps) {
     </>
   );
 
-  if (true) {
+  const timezone = isPrimary ? data.default : data.tz;
+
+  if (timezone) {
+    const hours = generateHourArray(data.default || '', data.tz || '', isPrimary);
+    const timezoneMeta = getMetaData(data.default || '', data.tz || '', isPrimary);
+
     child = (
       <div className="space-y-2">
-        <h5>(UTC-04:00) Georgetown, La Paz, Manaus, San Juan</h5>
+        <h5>{timezoneMeta.timezone?.text}</h5>
         <div className="flex justify-center">
-          {Array.from(Array(24).keys()).map((e) => {
+          {hours.map((e, i) => {
             let css = 'border-r border-sky-700 p-2 text-center';
-            if (e > 6 && e < 18) {
+            if (e.hour > 6 && e.hour < 18) {
               css += ' bg-sky-300 text-sky-700';
             } else {
               css += ' bg-sky-600 text-white';
             }
 
             return (
-              <div className={css} style={{ width: '35px' }} key={e}>
-                {e}
+              <div className={css} style={{ width: '35px' }} key={i}>
+                {e.hour}
               </div>
             );
           })}
