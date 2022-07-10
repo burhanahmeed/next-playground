@@ -14,9 +14,10 @@ interface ITimezone {
 
 interface IProps {
   onChange: Function;
+  value?: string;
 }
 
-export default function InputTimezone({ onChange }: IProps) {
+export default function InputTimezone({ onChange, value }: IProps) {
   const handleChange = (val: string) => {
     onChange(val);
   };
@@ -25,6 +26,7 @@ export default function InputTimezone({ onChange }: IProps) {
     <Select
       className="w-full"
       showSearch
+      value={value}
       placeholder="Select timezone"
       optionFilterProp="children"
       filterOption={(input, option) =>

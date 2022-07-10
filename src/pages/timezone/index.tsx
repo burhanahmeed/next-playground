@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Button } from 'antd';
 // UI
 import { Main } from '@/components/templates/Main';
@@ -10,21 +11,29 @@ import Card from '@/components/modules/timezone/TimezoneCard';
 import { useState } from 'react';
 
 interface ITimezoneObject {
-  tz: string,
+  tz: string;
 }
 
 const Timezone = () => {
+  const [hour, setHour] = useState(moment(new Date(), 'HH:mm'));
   const [defaultTz, setDefaultTz] = useState('');
   const [timezone, setTimezone] = useState<ITimezoneObject[]>([]);
 
   const changeTimezone = (value: string, index: number) => {
-    const tz = [ ...timezone ];
+    const tz: any = [...timezone];
     if (tz[index]) {
       tz[index].tz = value;
     }
 
     setTimezone(tz);
-  }
+  };
+
+  const addTimezone = () => {
+    const tz = [...timezone];
+    tz.push({ tz: '' });
+
+    setTimezone(tz);
+  };
 
   return (
     <Main
@@ -40,12 +49,22 @@ const Timezone = () => {
       <Container>
         <div className="space-y-4 p-16">
           <h1 className="text-white">⦾ Timezone</h1>
-          <Card isPrimary changeTimezone={setDefaultTz} data={{ default: defaultTz }} />
+          <Card
+            isPrimary
+            changeTimezone={setDefaultTz}
+            data={{ default: defaultTz, hour, setHour }}
+          />
           {timezone.map((e, i) => (
-            <Card key={i} data={{ default: defaultTz, ...e }} changeTimezone={(val: string) => changeTimezone(val, i)} />
+            <Card
+              key={i}
+              data={{ default: defaultTz, hour, setHour, ...e }}
+              changeTimezone={(val: string) => changeTimezone(val, i)}
+            />
           ))}
           <div>
-            <Button type="primary">Add Timezone</Button>
+            <Button onClick={addTimezone} type="primary">
+              Add Timezone
+            </Button>
           </div>
         </div>
       </Container>
