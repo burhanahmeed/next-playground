@@ -20,8 +20,8 @@ export const generateHourArray = (
 
     if (timeDifference < 0) {
       return [
-        ...initial.slice(roundedTimeDiff, initial.length),
-        ...initial.slice(0, roundedTimeDiff),
+        ...initial.slice(Math.abs(roundedTimeDiff), initial.length),
+        ...initial.slice(0, Math.abs(roundedTimeDiff)),
       ];
     }
 
