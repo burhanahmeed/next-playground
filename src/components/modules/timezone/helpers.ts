@@ -18,12 +18,13 @@ export const generateHourArray = (
     const timeDifference = defTz.offset - tz.offset;
     const roundedTimeDiff = Number(timeDifference.toFixed(0));
 
-    if (timeDifference > 0) {
+    if (timeDifference < 0) {
       return [
         ...initial.slice(roundedTimeDiff, initial.length),
         ...initial.slice(0, roundedTimeDiff),
       ];
     }
+
     return [
       ...initial.slice(initial.length - roundedTimeDiff, initial.length),
       ...initial.slice(0, initial.length - roundedTimeDiff),

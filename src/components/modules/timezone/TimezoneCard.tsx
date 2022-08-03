@@ -65,7 +65,11 @@ export default function TimezoneCard({
             }
 
             if (e.hour === 23) {
-              css += ' mr-1';
+              css += ' mr-0.5 rounded-r';
+            }
+
+            if (e.hour === 0) {
+              css += ' rounded-l';
             }
 
             return (
