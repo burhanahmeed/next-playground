@@ -7,6 +7,7 @@ import { generateHourArray } from '@/components/modules/timezone/helpers';
 interface IProps {
   isPrimary?: boolean;
   changeTimezone: Function;
+  onRemove?: Function;
   data: {
     tz?: string;
     default?: string;
@@ -19,6 +20,7 @@ export default function TimezoneCard({
   isPrimary = false,
   changeTimezone,
   data,
+  onRemove,
 }: IProps) {
   const handleTimezoneChange = (val: string) => changeTimezone(val);
 
@@ -31,7 +33,10 @@ export default function TimezoneCard({
         {!isPrimary && (
           <div className="cursor-pointer">
             <Tooltip placement="top" title="Remove Block">
-              <CloseCircleOutlined style={{ fontSize: '16px', color: 'red' }} />
+              <CloseCircleOutlined
+                style={{ fontSize: '16px', color: 'red' }}
+                onClick={() => onRemove && onRemove()}
+              />
             </Tooltip>
           </div>
         )}
@@ -71,6 +76,7 @@ export default function TimezoneCard({
               <Tooltip placement="top" title="Remove Block">
                 <CloseCircleOutlined
                   style={{ fontSize: '16px', color: 'red' }}
+                  onClick={() => onRemove && onRemove()}
                 />
               </Tooltip>
             </div>

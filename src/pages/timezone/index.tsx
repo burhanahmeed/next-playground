@@ -35,6 +35,13 @@ const Timezone = () => {
     setTimezone(tz);
   };
 
+  const removeTimezone = (index: number) => {
+    const tz = [...timezone];
+    tz.splice(index, 1);
+
+    setTimezone(tz);
+  };
+
   return (
     <Main
       meta={
@@ -59,6 +66,7 @@ const Timezone = () => {
               key={i}
               data={{ default: defaultTz, hour, setHour, ...e }}
               changeTimezone={(val: string) => changeTimezone(val, i)}
+              onRemove={() => removeTimezone(i)}
             />
           ))}
           <div>
