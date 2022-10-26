@@ -27,12 +27,13 @@ export const generateHourArray = (
       parseOffsetValue(defTz.offset) - parseOffsetValue(tz.offset);
     const roundedTimeDiff = Number(timeDifference.toFixed(0));
 
-    if (timeDifference > 0) {
+    if (timeDifference < 0) {
       return [
-        ...initial.slice(roundedTimeDiff, initial.length),
-        ...initial.slice(0, roundedTimeDiff),
+        ...initial.slice(Math.abs(roundedTimeDiff), initial.length),
+        ...initial.slice(0, Math.abs(roundedTimeDiff)),
       ];
     }
+
     return [
       ...initial.slice(initial.length - roundedTimeDiff, initial.length),
       ...initial.slice(0, initial.length - roundedTimeDiff),
