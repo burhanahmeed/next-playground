@@ -3,13 +3,12 @@ import timezone from '@/components/modules/timezone/data.json';
 
 const { Option } = Select;
 
-interface ITimezone {
-  value: string;
-  abbr: string;
-  offset: number;
-  isdst: boolean;
+export interface ITimezone {
+  country_code: string;
+  offset: string;
+  dst: string;
   text: string;
-  utc: string[];
+  id: string;
 }
 
 interface IProps {
@@ -37,7 +36,7 @@ export default function InputTimezone({ onChange, value }: IProps) {
       onChange={handleChange}
     >
       {timezone.map((e: ITimezone, i: number) => (
-        <Option key={i} value={e.value}>
+        <Option key={i} value={e.id}>
           {e.text}
         </Option>
       ))}

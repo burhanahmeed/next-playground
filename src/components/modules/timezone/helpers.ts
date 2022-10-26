@@ -1,5 +1,13 @@
 import Timezones from '@/components/modules/timezone/data.json';
 
+const parseOffsetValue = (offset: string) => {
+  if (offset && offset.split(':')[0]) {
+    return Number(offset.split(':')[0]);
+  }
+
+  return 0;
+};
+
 export const generateHourArray = (
   defaultTz: string,
   timezone: string,
@@ -11,11 +19,12 @@ export const generateHourArray = (
       day: 0,
     };
   });
-  const tz = Timezones.find((e) => e.value === timezone);
-  const defTz = Timezones.find((e) => e.value === defaultTz);
+  const tz = Timezones.find((e) => e.id === timezone);
+  const defTz = Timezones.find((e) => e.id === defaultTz);
 
   if (!isPrimary && tz && defTz) {
-    const timeDifference = defTz.offset - tz.offset;
+    const timeDifference =
+      parseOffsetValue(defTz.offset) - parseOffsetValue(tz.offset);
     const roundedTimeDiff = Number(timeDifference.toFixed(0));
 
     if (timeDifference > 0) {
@@ -38,11 +47,12 @@ export const getMetaData = (
   timezone: string,
   isPrimary = false
 ) => {
-  const tz = Timezones.find((e) => e.value === timezone);
-  const defTz = Timezones.find((e) => e.value === defaultTz);
+  const tz = Timezones.find((e) => e.id === timezone);
+  const defTz = Timezones.find((e) => e.id === defaultTz);
   let timeDifference = 0;
   if (defTz && tz) {
-    timeDifference = defTz.offset - tz.offset;
+    timeDifference =
+      parseOffsetValue(defTz.offset) - parseOffsetValue(tz.offset);
   }
 
   return {

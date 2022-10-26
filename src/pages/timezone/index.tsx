@@ -1,5 +1,6 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import { Button } from 'antd';
+import { useEffect, useState } from 'react';
 // UI
 import { Main } from '@/components/templates/Main';
 import { Meta } from '@/components/utils/Meta';
@@ -8,7 +9,6 @@ import MainHeader from '@/components/ui/MainHeader';
 import Footer from '@/components/ui/Footer';
 // import Card from '@/components/ui/Card';
 import Card from '@/components/modules/timezone/TimezoneCard';
-import { useState } from 'react';
 
 interface ITimezoneObject {
   tz: string;
@@ -41,6 +41,10 @@ const Timezone = () => {
 
     setTimezone(tz);
   };
+
+  useEffect(() => {
+    setDefaultTz(moment.tz.guess());
+  }, []);
 
   return (
     <Main
