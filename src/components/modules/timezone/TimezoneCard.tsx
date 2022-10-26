@@ -1,5 +1,6 @@
 import type moment from 'moment';
-import { TimePicker } from 'antd';
+import { TimePicker, Tooltip } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
 import InputTimezone from '@/components/modules/timezone/InputTimezone';
 import { generateHourArray } from '@/components/modules/timezone/helpers';
 
@@ -23,9 +24,18 @@ export default function TimezoneCard({
 
   let child = (
     <>
-      <h4 className="font-semibold">
-        Choose {isPrimary ? 'your primary' : ''} timezone
-      </h4>
+      <div className="flex justify-between">
+        <h4 className="font-semibold">
+          Choose {isPrimary ? 'your primary' : ''} timezone
+        </h4>
+        {!isPrimary && (
+          <div className="cursor-pointer">
+            <Tooltip placement="top" title="Remove Block">
+              <CloseCircleOutlined style={{ fontSize: '16px', color: 'red' }} />
+            </Tooltip>
+          </div>
+        )}
+      </div>
       <InputTimezone onChange={handleTimezoneChange} />
     </>
   );
@@ -41,18 +51,29 @@ export default function TimezoneCard({
 
     child = (
       <div className="space-y-2">
-        <div className="flex space-x-4">
-          <div style={{ width: '300px' }}>
-            <InputTimezone value={timezone} onChange={handleTimezoneChange} />
+        <div className="flex justify-between">
+          <div className="flex space-x-2">
+            <div style={{ width: '300px' }}>
+              <InputTimezone value={timezone} onChange={handleTimezoneChange} />
+            </div>
+            {isPrimary ? (
+              <TimePicker
+                value={data.hour}
+                format={'HH:mm'}
+                onChange={(val) => val && data.setHour(val)}
+              />
+            ) : (
+              <div className="text-lg">{data.hour.format('HH:mm')}</div>
+            )}
           </div>
-          {isPrimary ? (
-            <TimePicker
-              value={data.hour}
-              format={'HH:mm'}
-              onChange={(val) => val && data.setHour(val)}
-            />
-          ) : (
-            <div className="text-lg">{data.hour.format('HH:mm')}</div>
+          {!isPrimary && (
+            <div className="cursor-pointer">
+              <Tooltip placement="top" title="Remove Block">
+                <CloseCircleOutlined
+                  style={{ fontSize: '16px', color: 'red' }}
+                />
+              </Tooltip>
+            </div>
           )}
         </div>
         <div className="flex justify-center">
