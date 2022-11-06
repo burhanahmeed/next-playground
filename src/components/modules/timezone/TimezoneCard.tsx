@@ -1,4 +1,5 @@
 import type moment from 'moment';
+import momentTz from 'moment-timezone';
 import { TimePicker, Tooltip } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import InputTimezone from '@/components/modules/timezone/InputTimezone';
@@ -47,6 +48,15 @@ export default function TimezoneCard({
 
   const timezone = isPrimary ? data.default : data.tz;
 
+  const calculateHour = (hour: any, def: string, tz: string) => {
+    const defOffsite = momentTz.tz(def).utcOffset() * 60000;
+    const tzOffsite = momentTz.tz(tz).utcOffset() * 60000;
+    const defaultTimeMs =
+      new Date(momentTz(hour).format('LLLL')).getTime() - defOffsite;
+
+    return momentTz(defaultTimeMs + tzOffsite).format('HH:mm');
+  };
+
   if (timezone) {
     const hours = generateHourArray(
       data.default || '',
@@ -68,7 +78,13 @@ export default function TimezoneCard({
                 onChange={(val) => val && data.setHour(val)}
               />
             ) : (
-              <div className="text-lg">{data.hour.format('HH:mm')}</div>
+              <div className="text-lg">
+                {calculateHour(
+                  data.hour,
+                  data.default as string,
+                  data.tz as string
+                )}
+              </div>
             )}
           </div>
           {!isPrimary && (
