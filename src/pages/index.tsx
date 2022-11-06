@@ -1,11 +1,13 @@
+import Link from 'next/link';
 // UI
 import { Main } from '@/components/templates/Main';
 import { Meta } from '@/components/utils/Meta';
 import Container from '@/components/ui/Container';
 import MainHeader from '@/components/ui/MainHeader';
 import Footer from '@/components/ui/Footer';
-import EmptyList from '@/components/ui/EmptyList';
-// import Card from '@/components/ui/Card';
+// import EmptyList from '@/components/ui/EmptyList';
+// import { Card } from 'antd';
+import Card from '@/components/ui/Card';
 
 const Index = () => {
   return (
@@ -21,10 +23,17 @@ const Index = () => {
     >
       <Container>
         <div className="p-16">
-          {/* <Card>
-            <h3 className="text-white">Lorem ipsum</h3>
-          </Card> */}
-          <EmptyList
+          <Card>
+            <div className="flex items-center justify-between">
+              <h3 className="text-white">Timezone Playground</h3>
+              <Link href={'/timezone'}>
+                <span className="cursor-pointer text-white hover:text-gray-500">
+                  {'> Open <'}
+                </span>
+              </Link>
+            </div>
+          </Card>
+          {/* <EmptyList
             icon={
               <img
                 src="https://www.svgrepo.com/show/271821/dizzy.svg"
@@ -35,7 +44,7 @@ const Index = () => {
               />
             }
             text="Oops, there is no project yet..."
-          />
+          /> */}
         </div>
       </Container>
     </Main>
