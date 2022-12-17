@@ -18,6 +18,7 @@
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.20.6",
     "classnames": "^2.3.1",
+    "firebase": "^9.15.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
     "next": "^12.1.5",
