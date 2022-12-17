@@ -13,6 +13,7 @@ export default function RemoteConfig() {
   const [showBtn, setShowBtn] = useState(false);
   const [welcomeTxt, setWelcomeTxt] = useState('');
   const [json, setJson] = useState<any>({});
+  const [bannerText, setBannerText] = useState('');
 
   const getConfigValue = () => {
     const firebaseRemoteConfig = remoteConfig;
@@ -25,6 +26,7 @@ export default function RemoteConfig() {
         setJson(
           JSON.parse(getValue(firebaseRemoteConfig, 'remote_data').asString())
         );
+        setBannerText(getValue(firebaseRemoteConfig, 'banner_text').asString());
       });
     }
   };
@@ -47,6 +49,7 @@ export default function RemoteConfig() {
       <Container>
         <div className="p-16 text-white">
           <h1 className="text-white">{welcomeTxt}</h1>
+          <div className="my-5 bg-green-400 p-4">{bannerText}</div>
           {showBtn ? (
             <Button type="primary">New Button</Button>
           ) : (
